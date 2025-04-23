@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.yourname'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    // Add these additional repositories for Freetts
+    maven { url 'https://maven.restlet.com' }
+    maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+}
+
+dependencies {
+    // Basic voice processing
+    implementation 'edu.cmu.sphinx:sphinx4-core:5prealpha-SNAPSHOT'
+    implementation 'edu.cmu.sphinx:sphinx4-data:5prealpha-SNAPSHOT'
+    implementation 'com.sun.speech.freetts:freetts:1.2.2'
+
+    // Alternative Freetts version if the above doesn't work
+    // implementation 'de.dfki.lt.freetts:freetts:1.2.2'
+    // implementation 'com.cloudgarden:freetts:1.2.2'
+
+    // Utilities
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+    // Testing
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+application {
+    mainClass = 'com.yourname.voiceassistant.Main'
+}
+
+test {
+    useJUnitPlatform()
+}
