@@ -4,7 +4,7 @@ import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
 public class Main {
-    private static final String VOICE_NAME = "kevin16"; // Try "kevin" if this fails
+    private static final String VOICE_NAME = AppConfig.getDefaultVoice(); // Try "kevin" if this fails
     private static Voice voice;
 
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class Main {
         System.setProperty("freetts.voicespath", "libs"); // Point to your libs folder
 
         initializeVoice();
-        speak("Hello, I am your Java voice assistant. How can I help you today?");
+        speak("Hello, I am "+ AppConfig.getAssistantName() + ". How can I help you today?");
     }
 
     private static void initializeVoice() {
