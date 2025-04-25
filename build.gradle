@@ -8,34 +8,22 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-    // Add these additional repositories for Freetts
-    maven { url 'https://maven.restlet.com' }
-    maven { url 'https://repo.gradle.org/gradle/libs-releases' }
 }
 
 dependencies {
-    // Basic voice processing
-    implementation 'edu.cmu.sphinx:sphinx4-core:5prealpha-SNAPSHOT'
-    implementation 'edu.cmu.sphinx:sphinx4-data:5prealpha-SNAPSHOT'
-    implementation 'com.sun.speech.freetts:freetts:1.2.2'
+    // Include all JAR files from libs folder
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Alternative Freetts version if the above doesn't work
-    // implementation 'de.dfki.lt.freetts:freetts:1.2.2'
-    // implementation 'com.cloudgarden:freetts:1.2.2'
-
-    // Utilities
-    implementation 'org.apache.commons:commons-lang3:3.12.0'
-
-    // Testing
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
-
 application {
     mainClass = 'com.yourname.voiceassistant.Main'
 }
 
 test {
+    // This line can be removed if you're using Gradle < 5.6
+    // useJUnitJupiter()
+    // Alternatively, use:
     useJUnitPlatform()
 }
