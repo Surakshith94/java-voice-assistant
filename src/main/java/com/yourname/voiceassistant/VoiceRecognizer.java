@@ -68,4 +68,8 @@ public class VoiceRecognizer {
         }
         return "";
     }
+
+    public String getWakeWord() {
+        return wakeWord;
+    }
 }

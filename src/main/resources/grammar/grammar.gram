@@ -1,0 +1,10 @@
+#JSGF V1.0;
+grammar grammar;
+
+public <command> = (
+    (jarvis | hello | hi | hey) |
+    (what time is it | tell me the time | current time) |
+    (exit | quit | stop | goodbye) |
+    (how are you | what's up) |
+    (thank you | thanks)
+);

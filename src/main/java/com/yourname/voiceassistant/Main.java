@@ -17,7 +17,8 @@ public class Main {
 
         if (voice != null) {
             voice.allocate();
-            speak("Hello I am " + AppConfig.getAssistantName());
+            speak("Hello, I am " + AppConfig.getAssistantName() + ". Say '" +
+                    AppConfig.getWakeWord() + "' to activate me.");
         } else {
             System.err.println("[ERROR] Cannot find voice 'kevin16'");
             System.err.println("Available voices: " +
@@ -26,33 +27,29 @@ public class Main {
         }
 
         VoiceRecognizer recognizer = new VoiceRecognizer();
+        CommandManager commandManager = new CommandManager();
 
         while (true) {
+            System.out.println("Listening for wake word...");
             recognizer.listenForWakeWord();
-            speak("How can I help you?");
+            speak("Yes? How can I help you?");
 
             String command = recognizer.listen();
-
             if (!command.isEmpty()) {
-                System.out.println("[SYSTEM] Processing: " + command);
+                System.out.println("You said: " + command);
 
-                if (command.matches(".*(time|clock).*")) {
-                    String time = java.time.LocalTime.now()
-                            .format(java.time.format.DateTimeFormatter.ofPattern("h:mm a"));
-                    speak("The time is " + time);
-                }
-                else if (command.matches(".*(exit|quit|stop).*")) {
-                    speak("Goodbye");
+                if (command.toLowerCase().contains("exit") || command.toLowerCase().contains("quit")) {
+                    speak("Goodbye!");
                     System.exit(0);
                 }
-                else {
-                    speak("You said: " + command);
-                }
+
+                commandManager.processCommand(command);
             }
         }
+
     }
 
-    private static void speak(String text) {
+    public static void speak(String text) {
         System.out.println("[ASSISTANT] " + text);
         try {
             voice.speak(text);
