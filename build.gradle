@@ -31,6 +31,9 @@ dependencies {
     implementation 'org.json:json:20210307'
     implementation 'edu.stanford.nlp:stanford-corenlp:4.5.0'
     implementation 'edu.stanford.nlp:stanford-corenlp:4.5.0:models'
+
+    //Database
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.3'
 }
 application {
     mainClass = 'com.yourname.voiceassistant.Main'
