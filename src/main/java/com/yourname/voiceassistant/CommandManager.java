@@ -2,6 +2,9 @@ package com.yourname.voiceassistant;
 
 import com.yourname.voiceassistant.commands.CommandHandler;
 import com.yourname.voiceassistant.commands.GreetingCommand;
+import com.yourname.voiceassistant.commands.DateCommand;
+import com.yourname.voiceassistant.commands.TimeCommand;
+import com.yourname.voiceassistant.commands.WeatherCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,9 @@ public class CommandManager {
         commandHandlers = new ArrayList<>();
         // Register command handlers
         commandHandlers.add(new GreetingCommand());
+        commandHandlers.add(new TimeCommand());
+        commandHandlers.add(new DateCommand());
+        commandHandlers.add(new WeatherCommand());
     }
 
     public void processCommand(String command) {

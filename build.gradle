@@ -24,6 +24,11 @@ dependencies {
     // Sphinx4 (latest stable version)
     implementation 'edu.cmu.sphinx:sphinx4-core:5prealpha-SNAPSHOT'
     implementation 'edu.cmu.sphinx:sphinx4-data:5prealpha-SNAPSHOT'
+
+    // Weather
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'org.json:json:20210307'
 }
 application {
     mainClass = 'com.yourname.voiceassistant.Main'
