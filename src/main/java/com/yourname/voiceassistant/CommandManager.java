@@ -19,6 +19,7 @@ public class CommandManager {
         commandHandlers.add(new TimeCommand());
         commandHandlers.add(new DateCommand());
         commandHandlers.add(new WeatherCommand());
+        commandHandlers.add(new PreferenceCommand());
     }
 
     public void processCommand(String command) {
