@@ -3,6 +3,8 @@ package com.yourname.voiceassistant;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
+
+
 public class Main {
     private static Voice voice;
 
@@ -14,6 +16,9 @@ public class Main {
         // Initialize TTS
         VoiceManager vm = VoiceManager.getInstance();
         voice = vm.getVoice("kevin16");
+
+        // Initialize database first
+        DatabaseService.initialize();
 
         if (voice != null) {
             voice.allocate();
