@@ -1,0 +1,38 @@
+# Create/update .gitignore
+echo "# Build artifacts
+build/
+dist/
+out/
+target/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar
+*.gz
+
+# Gradle specific
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+bin/
+
+# Logs
+*.log
+logs/
+
+# Other
+*.swp
+*.bak
+*~
+.DS_Store" > .gitignore
+

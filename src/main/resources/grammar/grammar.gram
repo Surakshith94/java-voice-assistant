@@ -1,0 +1,25 @@
+#JSGF V1.0;
+grammar commandGrammar;
+
+public <command> =
+    (<wakeWord> | <timeQuery> | <dateQuery> | <exitCommand> | <greeting> | <thanks> | <weatherQuery>);
+
+<wakeWord> = (jarvis | hello | hi | hey | okay jarvis | listen jarvis);
+<timeQuery> = (what time is it | tell me the time | current time | time please);
+<dateQuery> = (what is today's date | tell me the date | current date);
+<exitCommand> = (exit | quit | stop | goodbye | shut down);
+<greeting> = (how are you | what's up | how are you doing);
+<thanks> = (thank you | thanks | thank you very much | thanks jarvis);
+
+<weatherQuery> = (
+    (what's|what is|how is) the (weather|temperature) [like] [in|at|for] <indianCity> |
+    (tell|give) me the weather [forecast] [for|in|at] <indianCity> |
+    is it (raining|sunny|hot|cold) in <indianCity> [right now|today]
+);
+
+<indianCity> = (
+    mumbai | delhi | bangalore | hyderabad | chennai |
+    kolkata | pune | ahmedabad | jaipur | lucknow |
+    bhopal | patna | indore | coimbatore | kochi |
+    [bombay city] | calcutta | bengaluru | madras
+);

@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.yourname'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    // Add Sonatype Snapshots for Sphinx4 (if needed)
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    // Add Freetts repository (if needed)
+    maven { url 'https://maven.restlet.com' }
+}
+
+dependencies {
+    // Include all JAR files from libs folder
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // Sphinx4 (latest stable version)
+    implementation 'edu.cmu.sphinx:sphinx4-core:5prealpha-SNAPSHOT'
+    implementation 'edu.cmu.sphinx:sphinx4-data:5prealpha-SNAPSHOT'
+
+    // Weather
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'org.json:json:20210307'
+    implementation 'edu.stanford.nlp:stanford-corenlp:4.5.0'
+    implementation 'edu.stanford.nlp:stanford-corenlp:4.5.0:models'
+
+    //Database
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.3'
+
+    //Logging dependencies
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'ch.qos.logback:logback-classic:1.2.11'
+}
+application {
+    mainClass = 'com.yourname.voiceassistant.Main'
+}
+
+test {
+    // This line can be removed if you're using Gradle < 5.6
+    // useJUnitJupiter()
+    // Alternatively, use:
+    useJUnitPlatform()
+}
