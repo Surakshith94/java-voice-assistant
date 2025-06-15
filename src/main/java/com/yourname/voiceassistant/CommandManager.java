@@ -7,6 +7,7 @@ import com.yourname.voiceassistant.commands.TimeCommand;
 import com.yourname.voiceassistant.commands.WeatherCommand;
 import com.yourname.voiceassistant.commands.PreferenceCommand;
 import com.yourname.voiceassistant.commands.ReminderCommand;
+import com.yourname.voiceassistant.commands.SystemCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class CommandManager {
         commandHandlers.add(new WeatherCommand());
         commandHandlers.add(new PreferenceCommand());
         commandHandlers.add(new ReminderCommand());
+        commandHandlers.add(new SystemCommand());
     }
 
     public void processCommand(String command) {
