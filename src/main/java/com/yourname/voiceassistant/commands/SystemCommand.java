@@ -16,15 +16,17 @@ public class SystemCommand implements CommandHandler {
     @Override
     public void handle(String command) {
         try {
-            if (command.contains("open") || command.contains("launch")) {
-                handleOpenCommand(command);
-            } else if (command.contains("close")) {
-                handleCloseCommand(command);
-            } else if (command.contains("search")) {
-                handleSearchCommand(command);
+            if (command.contains("chrome")) {
+                if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                    Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start chrome"});
+                } else {
+                    Runtime.getRuntime().exec(new String[]{"google-chrome"});
+                }
+                Main.speak("Opening Google Chrome");
             }
-        } catch (Exception e) {
-            Main.speak("Sorry, I couldn't complete that action.");
+            // ... other apps
+        } catch (IOException e) {
+            Main.speak("Sorry, I couldn't open that application.");
         }
     }
 
