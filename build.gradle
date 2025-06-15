@@ -49,7 +49,7 @@ dependencies {
     implementation 'org.controlsfx:controlsfx:11.1.2'
 }
 application {
-    mainClass = 'com.yourname.voiceassistant.Main'
+    mainClass = 'com.yourname.voiceassistant.gui.MainApplication'
 }
 
 test {
