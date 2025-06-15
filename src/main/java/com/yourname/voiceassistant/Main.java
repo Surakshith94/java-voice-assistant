@@ -28,15 +28,10 @@ public class Main {
         return AppConfig.getWakeWord();
     }
 
-    public static void processCommand(String command) {
-        if (commandManager != null) {
-            commandManager.processCommand(command);
-        } else {
-            logger.warn("Command manager not initialized");
-        }
-    }
-
     public static void main(String[] args) {
+        // Initialize command manager first
+        commandManager = new CommandManager();
+
         logger.info("Starting voice assistant");
 
         // Check if GUI should be launched
@@ -47,6 +42,13 @@ public class Main {
             initializeComponents();
             runCliMode();
         }
+    }
+
+    public static void processCommand(String command) {
+        if (commandManager == null) {
+            commandManager = new CommandManager();
+        }
+        commandManager.processCommand(command);
     }
 
     private static void initializeComponents() {
@@ -60,9 +62,6 @@ public class Main {
 
             // Initialize TTS
             initializeVoice();
-
-            // Initialize command manager
-            commandManager = new CommandManager();
 
         } catch (Exception e) {
             logger.error("Initialization failed", e);
