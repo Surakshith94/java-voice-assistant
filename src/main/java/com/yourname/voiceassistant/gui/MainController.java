@@ -23,6 +23,8 @@ public class MainController {
     private final double[] amplitudes = new double[30];
     private final Random random = new Random();
     private AnimationTimer animationTimer;
+    private Timeline speakingTimeline;
+    private boolean isSpeaking = false;
 
     @FXML
     public void initialize() {
@@ -47,6 +49,7 @@ public class MainController {
 
         // Setup voice visualizer animation
         setupVisualizerAnimation();
+        setupSpeakingAnimation();
     }
 
     private void startListening() {
@@ -127,5 +130,39 @@ public class MainController {
                 }
             }
         }).start();
+    }
+    private void setupSpeakingAnimation() {
+        speakingTimeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(voiceVisualizer.opacityProperty(), 1.0)),
+                new KeyFrame(Duration.seconds(0.5),
+                        new KeyFrame(Duration.seconds(1.0), new KeyValue(voiceVisualizer.opacityProperty(), 0.3))
+                );
+        speakingTimeline.setCycleCount(Timeline.INDEFINITE);
+        speakingTimeline.setAutoReverse(true);
+    }
+
+    public void appendToConversation(String text) {
+        Platform.runLater(() -> {
+            conversationArea.appendText("Assistant: " + text + "\n");
+            startSpeakingAnimation();
+        });
+    }
+
+    private void startSpeakingAnimation() {
+        if (!isSpeaking) {
+            isSpeaking = true;
+            speakingTimeline.play();
+
+            // Stop animation after a delay
+            new Timeline(new KeyFrame(Duration.seconds(3), e -> {
+                stopSpeakingAnimation();
+            })).play();
+        }
+    }
+
+    private void stopSpeakingAnimation() {
+        isSpeaking = false;
+        speakingTimeline.stop();
+        voiceVisualizer.setOpacity(1.0);
     }
 }
