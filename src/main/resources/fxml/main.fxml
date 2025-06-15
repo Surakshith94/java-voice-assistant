@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
+<?import com.yourname.voiceassistant.gui.VoiceVisualizer?>
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       spacing="10" style="-fx-padding: 10;" fx:controller="com.yourname.voiceassistant.gui.MainController" stylesheets="@css/style.css">
@@ -22,6 +23,7 @@
                 style="-fx-font-weight: bold; -fx-base: #4CAF50;"/>
         <Button fx:id="stopButton" text="Stop Listening" disable="true"/>
     </HBox>
+    <VoiceVisualizer fx:id="voiceVisualizer" prefHeight="60" VBox.vgrow="NEVER"/>
 
     <Label text="Conversation:" style="-fx-font-weight: bold;"/>
     <TextArea fx:id="conversationArea" editable="false" wrapText="true"
