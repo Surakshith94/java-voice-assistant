@@ -54,19 +54,16 @@ public class VoiceRecognizer {
     }
 
     public String listen() {
-        logger.info("Listening for command...");
-        recognizer.startRecognition(false);
-        SpeechResult result = recognizer.getResult();
-        recognizer.stopRecognition();
+        try {
+            recognizer.startRecognition(true);
+            SpeechResult result = recognizer.getResult();
+            recognizer.stopRecognition();
 
-        if (result != null) {
-            String command = result.getHypothesis().trim();
-            if (!command.isEmpty() && !command.equals("<unk>")) {
-                logger.info("User command: {}", command);
-                return command.toLowerCase();
-            }
+            return result != null ? result.getHypothesis() : "";
+        } catch (Exception e) {
+            logger.error("Error in recognition", e);
+            return "";
         }
-        return "";
     }
 
     public String getWakeWord() {
