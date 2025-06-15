@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="10" style="-fx-padding: 10;" fx:controller="com.yourname.voiceassistant.gui.MainController">
+
+    <Label text="Java Voice Assistant" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Status:" style="-fx-font-weight: bold;"/>
+        <Label fx:id="statusLabel" text="Ready"/>
+    </HBox>
+
+    <Separator/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button fx:id="listenButton" text="Start Listening"
+                style="-fx-font-weight: bold; -fx-base: #4CAF50;"/>
+        <Button fx:id="stopButton" text="Stop Listening" disable="true"/>
+    </HBox>
+
+    <Label text="Conversation:" style="-fx-font-weight: bold;"/>
+    <TextArea fx:id="conversationArea" editable="false" wrapText="true"
+              style="-fx-font-family: 'Monospaced';"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Your command:"/>
+        <TextField fx:id="commandField" promptText="Type your command here..."
+                   HBox.hgrow="ALWAYS"/>
+        <Button fx:id="sendButton" text="Send"/>
+    </HBox>
+
+    <Separator/>
+
+    <Label text="Settings:" style="-fx-font-weight: bold;"/>
+    <GridPane hgap="10" vgap="5">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Assistant Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="nameField" text="Jarvis" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Wake Word:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="wakeWordField" text="jarvis" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Voice:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="voiceComboBox" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+</VBox>
