@@ -1,0 +1,36 @@
+.root {
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-font-weight: bold;
+    -fx-padding: 5 15 5 15;
+}
+
+#listenButton {
+    -fx-base: #4CAF50;
+    -fx-text-fill: white;
+}
+
+#stopButton {
+    -fx-base: #F44336;
+    -fx-text-fill: white;
+}
+
+#sendButton {
+    -fx-base: #2196F3;
+    -fx-text-fill: white;
+}
+
+.text-area {
+    -fx-font-family: 'Monospaced';
+    -fx-font-size: 13px;
+}
+
+.text-area .content {
+    -fx-background-color: #f5f5f5;
+}
+
+.label {
+    -fx-font-weight: bold;
+}

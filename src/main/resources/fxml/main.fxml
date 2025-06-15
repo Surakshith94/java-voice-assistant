@@ -6,7 +6,7 @@
 <?import javafx.geometry.*?>
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      spacing="10" style="-fx-padding: 10;" fx:controller="com.yourname.voiceassistant.gui.MainController">
+      spacing="10" style="-fx-padding: 10;" fx:controller="com.yourname.voiceassistant.gui.MainController" stylesheets="@css/style.css">
 
     <Label text="Java Voice Assistant" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
